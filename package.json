@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@fontsource-variable/inter": "5.0.21",
-    "normalize.css": "8.0.1",
     "vue": "^3.4.29"
   },
   "devDependencies": {
