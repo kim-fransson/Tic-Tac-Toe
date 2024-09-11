@@ -21,7 +21,7 @@ export async function cpuMove(board, cpuMark) {
       game.cpuIsThinkingOfThisTile(thinkingTiles[i]);
 
       // Wait for the delay before proceeding to the next tile
-      await delay(delayTime);
+      // await delay(delayTime);
     }
 
     // The last tile is the CPU's actual move

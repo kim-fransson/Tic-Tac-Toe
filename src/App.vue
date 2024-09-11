@@ -11,7 +11,7 @@ import { game } from './store/gameState';
     <div class="centered-container">
         <HomePage v-if="game.state === 'NEW_GAME'"  />
         <PickPlayer1Mark v-if="game.state === 'PICK_PLAYER_1_MARK'" />
-        <GameBoard v-if="game.state === 'GAME_RUNNING'" />
+        <GameBoard v-if="game.state === 'GAME_BOARD'" />
     </div>
 </template>
 

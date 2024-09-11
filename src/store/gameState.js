@@ -1,4 +1,5 @@
 import { cpuMove } from "@/cpuLogic";
+import { checkGameEnd } from "@/gameUtils";
 import { reactive } from "vue";
 
 const defaultValues = {
@@ -12,16 +13,18 @@ const defaultValues = {
   cpuThinkingOfTile: undefined,
 };
 
-/**
- * NEW_GAME, PICK_PLAYER_1_MARK, GAME_RUNNING
- */
 export const game = reactive({
-  state: "GAME_RUNNING",
+  state: "GAME_BOARD",
   player1Mark: defaultValues.player1Mark,
   cpuMark: defaultValues.cpuMark,
   board: defaultValues.board,
   currentMark: defaultValues.currentMark,
   cpuThinkingOfTile: defaultValues.cpuThinkingOfTile,
+  winner: undefined,
+  isGameOver: false,
+  winningCombination: undefined,
+  player1Points: 0,
+  cpuPoints: 0,
 
   setPlayer1Mark(mark) {
     this.player1Mark = mark;
@@ -31,7 +34,7 @@ export const game = reactive({
     this.state = "PICK_PLAYER_1_MARK";
   },
   startGame() {
-    this.state = "GAME_RUNNING";
+    this.state = "GAME_BOARD";
     if (this.currentMark === this.cpuMark) {
       cpuMove(this.board, this.cpuMark);
     }
@@ -42,11 +45,15 @@ export const game = reactive({
     this.currentMark = defaultValues.currentMark;
     this.board = defaultValues.board;
     this.state = "PICK_PLAYER_1_MARK";
+    this.winner = undefined,
+    this.isGameOver = false;
+    this.player1Points = 0;
+    this.cpuPoints = 0;
   },
   addMark(id) {
     this.updateBoard(id, this.currentMark);
 
-    if (this.currentMark === this.cpuMark) {
+    if (this.currentMark === this.cpuMark && !this.isGameOver) {
       cpuMove(this.board, this.cpuMark);
     }
   },
@@ -61,6 +68,22 @@ export const game = reactive({
     this.board = newBoard;
     this.cpuThinkingOfTile = undefined;
     this.currentMark = this.currentMark === "X" ? "O" : "X";
+
+    const { isGameOver, winner, combination } = checkGameEnd(this.board);
+
+    if (isGameOver) {
+      this.isGameOver = isGameOver;
+      this.winner = winner;
+      this.winningCombination = combination;
+
+      if (this.cpuMark === winner) {
+        this.cpuPoints++;
+      } else if (this.player1Mark === winner) {
+        this.player1Points++;
+      }
+
+      return;
+    }
   },
   cpuIsThinkingOfThisTile(tile) {
     this.cpuThinkingOfTile = tile;
