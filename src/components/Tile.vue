@@ -11,8 +11,7 @@ const tileClass = computed(() => `tile tile-${props.color}`)
 </script>
 
 <template>
-    <div :class="tileClass" :data-disabled="disabled || value !== undefined"
-        :data-cpu-thinking="enableHover">
+    <div :class="tileClass" :data-disabled="disabled || value !== undefined" :data-cpu-thinking="enableHover">
         <IconO v-if="value === 'O'" />
         <IconX v-if="value === 'X'" />
     </div>
@@ -26,7 +25,8 @@ const tileClass = computed(() => `tile tile-${props.color}`)
     transition: all 200ms ease-in-out;
 }
 
-.tile[data-disabled="false"]::after, .tile[data-cpu-thinking="true"]::after {
+.tile[data-disabled="false"]::after,
+.tile[data-cpu-thinking="true"]::after {
     content: "";
     position: absolute;
     display: flex;
@@ -41,10 +41,27 @@ const tileClass = computed(() => `tile tile-${props.color}`)
     cursor: pointer;
 }
 
-.tile:hover:after, .tile[data-cpu-thinking="true"]::after {
+.tile:hover:after,
+.tile[data-cpu-thinking="true"]::after {
     width: 104px;
     height: 104px;
     border-radius: 16px;
+}
+
+/* Styles for mobile devices */
+@media only screen and (max-width: 767px) {
+
+    .tile:hover:after,
+    .tile[data-cpu-thinking="true"]::after {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+    }
+
+    .tile>svg {
+        width: 72px;
+        height: 72px;
+    }
 }
 
 .tile-blue:after {

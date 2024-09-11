@@ -32,6 +32,7 @@ defineEmits(['quit', 'new-game'])
 
 .icon-text-container {
     display: flex;
+    align-items: center;
 }
 
 .button-group {

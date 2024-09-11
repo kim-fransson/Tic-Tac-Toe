@@ -65,6 +65,5 @@ const modalContent = computed(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--background-color);
 }
 </style>

@@ -24,6 +24,8 @@
 body {
   font-family: 'Inter Variable';
   margin: 0;
+  padding: 0px 8px;
+  background-color: var(--background-color);
 }
 
 .heading-xl {
@@ -58,12 +60,8 @@ body {
   }
 
   .heading-m {
-    font-size: 32px;
-    font-weight: 900;
-  }
-
-  .heading-s {
     font-size: 18px;
+    font-weight: 500;
   }
 }
 

@@ -14,7 +14,7 @@ const defaultValues = {
 };
 
 export const game = reactive({
-  state: "GAME_BOARD",
+  state: "NEW_GAME",
   player1Mark: defaultValues.player1Mark,
   cpuMark: defaultValues.cpuMark,
   board: defaultValues.board,

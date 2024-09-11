@@ -160,6 +160,15 @@ const labelO = computed(() => 'O ' + (game.player1Mark === 'O' ? '(YOU)' : '(CPU
     grid-template-rows: repeat(3, 1fr);
 }
 
+/* Styles for mobile devices */
+@media only screen and (max-width: 767px) {
+
+    .grid {
+        width: 320px;
+        height: 320px;
+    }
+}
+
 
 /* First two rows (1-3 and 4-6) should have a border-bottom */
 .grid>div:nth-child(-n+6) {

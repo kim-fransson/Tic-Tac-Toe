@@ -42,7 +42,8 @@ const isXMarkSelected = computed(() => game.player1Mark === 'X');
     text-align: center;
     gap: 40px;
     align-items: center;
-    min-width: 520px;
+    max-width: 520px;
+    width: 100%;
 }
 
 .selection-box {
