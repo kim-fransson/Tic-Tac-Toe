@@ -23,6 +23,7 @@ const buttonClass = computed(() => `btn btn-${props.variant}`)
 
 <style>
 .btn {
+    position: relative;
     background: var(--btn-bg-color);
     font-weight: 500;
     font-size: 20px;
@@ -34,11 +35,12 @@ const buttonClass = computed(() => `btn btn-${props.variant}`)
     border-radius: 999px;
     gap: 10px;
     padding: 16px 96px;
-    transition: transform 200ms ease-in-out, background 200ms ease-in-out;
+    transition: transform 200ms ease-in-out, background 200ms ease-in-out, box-shadow 200ms ease-in-out;
 }
 
 .btn:hover {
     background: var(--btn-hover-color);
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.14);
 }
 
 /* Styles for mobile devices */
@@ -63,6 +65,13 @@ const buttonClass = computed(() => `btn btn-${props.variant}`)
     --btn-bg-color: var(--light-blue);
     --btn-focus-color: var(--orange);
     --btn-hover-color: #81d4fa;
+    /* not provided from designs */
+}
+
+.btn-tertiary {
+    --btn-bg-color: var(--gray);
+    --btn-focus-color: var(--orange);
+    --btn-hover-color: var(--orange);
     /* not provided from designs */
 }
 </style>

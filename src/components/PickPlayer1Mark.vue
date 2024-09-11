@@ -31,7 +31,7 @@ const isXMarkSelected = computed(() => game.player1Mark === 'X');
     </div>
 </template>
 
-<style>
+<style scoped>
 .radio-group {
     display: flex;
     justify-content: space-around;
