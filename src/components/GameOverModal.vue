@@ -20,14 +20,13 @@ defineEmits(['quit', 'new-game'])
 </template>
 
 <style scoped>
-
 .modal-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
     justify-items: center;
     align-items: center;
-    padding: 48px;
+    padding: 48px 4px;
 }
 
 .icon-text-container {
@@ -39,6 +38,15 @@ defineEmits(['quit', 'new-game'])
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
+}
+
+/* Styles for mobile devices */
+@media only screen and (max-width: 767px) {
+    .button-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
 }
 
 .modal-icon {
