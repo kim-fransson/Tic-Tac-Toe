@@ -39,7 +39,26 @@ export const game = reactive({
       cpuMove(this.board, this.cpuMark);
     }
   },
+  quit() {
+    this.resetGame();
+    this.state = 'NEW_GAME'
+  },
+  newGame() {
+    const newPlayer1Mark = this.cpuMark;
+    const newCpuMark = this.player1Mark;
+
+    this.player1Mark = newPlayer1Mark;
+    this.cpuMark = newCpuMark;
+    this.currentMark = defaultValues.currentMark;
+    this.board = defaultValues.board;
+    this.state = "GAME_BOARD";
+    this.winner = undefined,
+    this.isGameOver = false;
+
+    this.startGame();
+  },
   resetGame() {
+    console.log('resetGame...')
     this.player1Mark = defaultValues.player1Mark;
     this.cpuMark = defaultValues.cpuMark;
     this.currentMark = defaultValues.currentMark;
@@ -72,14 +91,17 @@ export const game = reactive({
     const { isGameOver, winner, combination } = checkGameEnd(this.board);
 
     if (isGameOver) {
+      console.log('game over')
       this.isGameOver = isGameOver;
       this.winner = winner;
       this.winningCombination = combination;
 
       if (this.cpuMark === winner) {
-        this.cpuPoints++;
+        console.log('points to cpu')
+        this.cpuPoints = this.cpuPoints + 1;
       } else if (this.player1Mark === winner) {
-        this.player1Points++;
+        console.log('points to you')
+        this.player1Points = this.player1Points + 1;
       }
 
       return;

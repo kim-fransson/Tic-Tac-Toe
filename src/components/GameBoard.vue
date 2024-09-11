@@ -99,6 +99,12 @@ function getLineStyle(winningCombination) {
     };
 }
 
+const pointsX = computed(() => (game.cpuMark === 'X' ? game.cpuPoints : game.player1Points));
+const labelX = computed(() => 'X ' + (game.cpuMark === 'X' ? '(CPU)' : '(YOU)'));
+
+const pointsO = computed(() => (game.player1Mark === 'O' ? game.player1Points : game.cpuPoints));
+const labelO = computed(() => 'O ' + (game.player1Mark === 'O' ? '(YOU)' : '(CPU)'));
+
 </script>
 
 <template>
@@ -122,10 +128,8 @@ function getLineStyle(winningCombination) {
             </div>
         </div>
 
-        <PointsPill :points="game.cpuMark === 'X' ? game.cpuPoints : game.player1Points"
-            :label="'X ' + (game.cpuMark === 'X' ? '(CPU)' : '(YOU)')" color="blue" />
-        <PointsPill :points="game.player1Mark === '0' ? game.player1Points : game.cpuPoints"
-            :label="'O ' + (game.player1Mark === 'O' ? '(YOU)' : '(CPU)')" color="orange" />
+        <PointsPill :points="pointsX" :label="labelX" color="blue" />
+        <PointsPill :points="pointsO" :label="labelO" color="orange" />
 
         <Button @on-press="game.resetGame()" variant="tertiary">Reset game</Button>
     </div>

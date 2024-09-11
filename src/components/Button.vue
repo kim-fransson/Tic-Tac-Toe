@@ -71,7 +71,7 @@ const buttonClass = computed(() => `btn btn-${props.variant}`)
 .btn-tertiary {
     --btn-bg-color: var(--gray);
     --btn-focus-color: var(--orange);
-    --btn-hover-color: var(--orange);
+    --btn-hover-color: #ebebeb;
     /* not provided from designs */
 }
 </style>
