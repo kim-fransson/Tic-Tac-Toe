@@ -58,7 +58,6 @@ export const game = reactive({
     this.startGame();
   },
   resetGame() {
-    console.log('resetGame...')
     this.player1Mark = defaultValues.player1Mark;
     this.cpuMark = defaultValues.cpuMark;
     this.currentMark = defaultValues.currentMark;
@@ -91,16 +90,13 @@ export const game = reactive({
     const { isGameOver, winner, combination } = checkGameEnd(this.board);
 
     if (isGameOver) {
-      console.log('game over')
       this.isGameOver = isGameOver;
       this.winner = winner;
       this.winningCombination = combination;
 
       if (this.cpuMark === winner) {
-        console.log('points to cpu')
         this.cpuPoints = this.cpuPoints + 1;
       } else if (this.player1Mark === winner) {
-        console.log('points to you')
         this.player1Points = this.player1Points + 1;
       }
 
